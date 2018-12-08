@@ -21,17 +21,13 @@ while True:
                                                                        act='a_check',
                                                                        key=key,
                                                                        ts=ts)).json()
-    update = long_pool['updaetes']
+    update = long_pool['updates']
     if update [0][0] == 4:
         # print(update)
         user_id=update[0][3]
-        user_name = vk_bot.method('ues.get', {'users_ids':user_id})
+        user_name = vk_bot.method('users.get', {'users_ids':user_id})
         write_msg(user_id, 'привет, '+(user_name[0]['first_name']))
         print(str(user_name[0]['first_name']) + ' ' +
               str(user_name[0]['last_name']) + ' написал(а) боту - ' + str(update[0][6])) #сообщение нам
-
-
     #меняем ts для следующего запроса
     ts = long_pool['ts']
-
-    #коментик
