@@ -1,0 +1,5 @@
+TOKEN = ''
+MY_ID = ''
+APP_ID = ''
+API_URL = ''
+ACCESS_TOKEN = ''
