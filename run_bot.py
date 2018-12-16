@@ -9,7 +9,7 @@ def write_msg(user_id,text):
     vk_bot.method('messages.send', {'user_id':user_id,'message': text,'random_id':random.randint(0,1000)})
 
 
-vk_bot = vk_api.VkApi(token=ACCESS_TOKEN)
+vk_bot = vk_api.VkApi(token=TOKEN)
 long_pool = vk_bot.method('messages.getLongPollServer', {'need_pts':1,'lp_version':3})
 server, key, ts = long_pool['server'], long_pool['key'], long_pool['ts']
 print("готов к работе")
@@ -25,9 +25,9 @@ while True:
     if update [0][0] == 4:
         # print(update)
         user_id=update[0][3]
-        user_name = vk_bot.method('users.get', {'users_ids':user_id})
-        write_msg(user_id, 'привет, '+(user_name[0]['first_name']))
-        print(str(user_name[0]['first_name']) + ' ' +
-              str(user_name[0]['last_name']) + ' написал(а) боту - ' + str(update[0][6])) #сообщение нам
+        # user_name = vk_bot.method('users.get', {'users_ids':user_id})
+        write_msg(user_id, 'привет')
+        # print(str(user_name[0]['first_name']) + ' ' +
+        #       str(user_name[0]['last_name']) + ' написал(а) боту - ' + str(update[0][6])) #сообщение нам
     #меняем ts для следующего запроса
     ts = long_pool['ts']
